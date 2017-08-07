@@ -12,6 +12,10 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
         <Border Margin="2" BorderBrush="Black" BorderThickness="1">
             <Grid Margin="2">
                 <Grid.RowDefinitions>
@@ -29,7 +33,6 @@
                     </StackPanel>
                     <Button Name="buttonLaunchTD" Content="Launch Test Device" Margin="2" Click="buttonLaunchTD_Click"/>
                 </StackPanel>
-                <TextBlock Grid.Row="1" Name="tbTestDeviceStatus" Margin="2"/>
             </Grid>
         </Border>
         <Border Margin="2" BorderBrush="Black" BorderThickness="1" Grid.Column="1">
@@ -82,7 +85,12 @@
                 </StackPanel>
             </StackPanel>
         </Border>
-        <Border Grid.Column="2" Margin="2" BorderBrush="Azure" BorderThickness="1">
+        <Border Grid.Row="1" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="1" Margin="2">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <TextBlock Name="tbActionState" />
+            </ScrollViewer>
+        </Border>
+        <Border Grid.Column="2" Grid.RowSpan="2" Margin="2" BorderBrush="Azure" BorderThickness="1">
             <Grid Margin="2">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -110,7 +118,9 @@
                     <TextBox Name="tbResourceName" Margin="2" Text="egiothub20170712"/>
                     <Button Name="buttonRESTGet" Content="Check IoT Hub Quota" Margin="2" Click="buttonRESTGet_Click"/>
                 </StackPanel>
-                <TextBlock Name="tbRESTResult" Grid.Row="1" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Margin="2" Grid.Row="1">
+                    <TextBlock Name="tbRESTResult" ToolTip="Since it takes time to update the value, please wait a while after the operation and click this button."/>
+                </ScrollViewer>
             </Grid>
         </Border>
     </Grid>

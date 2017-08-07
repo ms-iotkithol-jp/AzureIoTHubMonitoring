@@ -96,11 +96,7 @@ namespace WpfIoTHubStatistics
                 this.Dispatcher.Invoke(() => {
                     channelMutex.WaitOne();
                     SetActionStatistics(interActionStatus.Action, interActionStatus.DataSize);
-                    string msg = "Action:" + interActionStatus.Action + ",DataSize:" + interActionStatus.DataSize + "@" + interActionStatus.Timestamp.ToString("yyyy/MM/dd-HH:mm:ss");
                     channelMutex.ReleaseMutex();
-                    var sb = new StringBuilder(msg);
-                    sb.AppendLine(tbTestDeviceStatus.Text);
-                    tbTestDeviceStatus.Text = sb.ToString();
                 });
 
             }
@@ -165,7 +161,14 @@ namespace WpfIoTHubStatistics
             };
             actionStatistics.Action = action;
             actionStatistics.DataSize = dataSize;
-            buttonRESTGet.IsEnabled = false;
+//            buttonRESTGet.IsEnabled = false;
+
+            string msg = "Action:" + action + ",DataSize:" + dataSize + "@" + actionStatistics.Timestamp.ToString("yyyy/MM/dd-HH:mm:ss");
+
+            var sb = new StringBuilder(msg);
+            sb.AppendLine("-----------------------------------------------");
+            sb.AppendLine(tbActionState.Text);
+            tbActionState.Text = sb.ToString();
 
         }
 
