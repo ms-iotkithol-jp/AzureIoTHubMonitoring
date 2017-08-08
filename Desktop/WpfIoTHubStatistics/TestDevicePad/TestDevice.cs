@@ -90,9 +90,13 @@ namespace TestDevicePad
             });
         }
 
-        public async Task SendAsync(byte[] message)
+        public async Task SendAsync(byte[] message,string propKey=null, string propValue=null)
         {
             var msg = new Microsoft.Azure.Devices.Client.Message(message);
+            if (!string.IsNullOrEmpty(propKey))
+            {
+                msg.Properties.Add(propKey, propValue);
+            }
             await deviceClient.SendEventAsync(msg);
 
         }

@@ -151,7 +151,15 @@ namespace TestDevicePad
         {
             if (testDevice == null) return;
             int size = int.Parse(tbDataSizeD2C.Text);
-            await testDevice.SendAsync(createData(size));
+            int psize = int.Parse(tbSendPropertySize.Text);
+            if (psize>0)
+            {
+                await testDevice.SendAsync(createData(size),"p",createSizedSring(psize));
+            }
+            else
+            {
+                await testDevice.SendAsync(createData(size));
+            }
 
             SetActionStatistics("SendD2C", size);
         }
@@ -206,7 +214,18 @@ namespace TestDevicePad
             SetActionStatus(action, dataSize);
         }
 
-        private byte[] createData(int size, bool random = false)
+        char[] creationDataUnits = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J' };
+
+        private string createSizedSring(int size)
+        {
+            var sb = new StringBuilder();
+            for(int i = 0; i < size; i++)
+            {
+                sb.Append(creationDataUnits[i % creationDataUnits.Length]);
+            }
+            return sb.ToString();
+        }
+        private byte[] createData(int size,  bool random = false)
         {
             var rnd = new Random(DateTime.Now.Millisecond);
             var content = new
@@ -218,18 +237,17 @@ namespace TestDevicePad
             {
                 return minContent;
             }
-            char[] data = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J' };
             var sb = new StringBuilder();
             int rest = size - minContent.Length;
             while (rest > 0)
             {
                 if (random)
                 {
-                    sb.Append(data[rnd.Next(data.Length)]);
+                    sb.Append(creationDataUnits[rnd.Next(creationDataUnits.Length)]);
                 }
                 else
                 {
-                    sb.Append(data[rest-- % data.Length]);
+                    sb.Append(creationDataUnits[rest-- % creationDataUnits.Length]);
                 }
             }
             content = new

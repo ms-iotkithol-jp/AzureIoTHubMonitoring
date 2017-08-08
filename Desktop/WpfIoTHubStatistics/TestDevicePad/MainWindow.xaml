@@ -22,6 +22,10 @@
             <Separator/>
             <TextBlock Text="Messaging" FontSize="14" Margin="2"/>
             <StackPanel Orientation="Horizontal">
+                <TextBlock Text="propertiy size:" Margin="2"/>
+                <TextBox Name="tbSendPropertySize" Text="0" Margin="2" Width="50"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Send Data Size : "/>
                 <TextBox Name="tbDataSizeD2C" Text="1024" Margin="2" Width="50"/>
                 <Button Name="buttonSendD2C" Content="Send" Margin="2" Click="buttonSendD2C_Click" IsEnabled="False"/>
