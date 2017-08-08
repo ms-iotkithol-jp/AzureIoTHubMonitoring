@@ -100,7 +100,7 @@
                     <TextBlock Text="Quota" FontSize="16"/>
                     <Separator/>
                     <TextBlock ToolTip="Please see 'Components of a REST API request/response'">
-                        <Hyperlink NavigateUri="https://docs.microsoft.com/ja-jp/rest/api/" TargetName="_top" RequestNavigate="Hyperlink_RequestNavigate">
+                        <Hyperlink NavigateUri="https://docs.microsoft.com/azure/iot-hub/iot-hub-rm-rest" TargetName="_top" RequestNavigate="Hyperlink_RequestNavigate">
                         How to get following settings
                         </Hyperlink>
                     </TextBlock>

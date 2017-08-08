@@ -115,6 +115,8 @@ namespace TestDevicePad
             }
         }
 
+        private int actionIndex = 0;
+
         private Microsoft.Azure.Devices.Client.Message currentReceivedMessage;
         private void TestDevice_C2DMessageReceived(object sender, Microsoft.Azure.Devices.Client.Message receivedMessage)
         {
@@ -204,6 +206,8 @@ namespace TestDevicePad
 
         private void SetActionStatistics(string action, int dataSize)
         {
+            actionIndex++;
+            action += "[" + actionIndex + "]";
             var sb = new StringBuilder();
             sb.AppendLine("Last Action:");
             sb.AppendLine("Action:" + action);
