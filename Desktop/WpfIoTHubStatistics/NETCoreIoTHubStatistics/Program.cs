@@ -19,12 +19,12 @@ namespace NETCoreIoTHubStatistics
             p.Run().Wait();
         }
 
-        string applicationId = "568526a0-e624-4f57-828b-e605b062c624";
-        string subscriptionId = "d685a1cf-9bbd-4a90-8321-ac54287fb087";
-        string tenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
-        string password = "P@ssw0rd.1";
-        string resourceGroupName = "eg20170712";
-        string iotHubName = "egiothub20170712";
+        string applicationId = "[application-id]";
+        string subscriptionId = "[subscription-id]";
+        string tenantId = "[tenant-id]";
+        string password = "[password]";
+        string resourceGroupName = "[resource-group-name]";
+        string iotHubName = "[iot-hub-name]";
 
         public Program(string[] args)
         {
